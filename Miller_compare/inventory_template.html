@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Data</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Inventory Data</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Item Code</th>
+                <th>On Hand</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in inventory_data %}
+            <tr>
+                <!-- Django 템플릿에서 특수 문자를 포함한 변수 이름 직접 참조 불가능 -->
+                <td>{{ item.code }}</td> <!-- 'Unnamed: 0' 열은 'code'로 가정 -->
+                <td>{{ item.on_hand }}</td> <!-- 예제는 'On Hand' 열을 'on_hand'로 가정 -->
+                <td>{{ item.ny }}</td> <!-- 'NY' 열은 'ny'로 가정 -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
