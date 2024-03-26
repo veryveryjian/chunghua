@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CBM 데이터</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+</head>
+<body>
+    <h1>CBM 데이터</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>재고</th>
+                <th>색상 코드</th>
+                <th>모델 코드</th>
+                <th>평균 2022</th>
+                <th>NY</th>
+                <th>NJ</th>
+                <th>CT</th>
+                <th>PA</th>
+                <th>275 번호</th>
+                <th>총계</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items_data %}
+            <tr>
+                <td>{{ item.item_name }}</td>
+                <td>{{ item.on_hand }}</td>
+                <td>{{ item.color_code }}</td>
+                <td>{{ item.model_code }}</td>
+                <td>{{ item.msavg_avg_2022 }}</td>
+                <td>{{ item.msroom_details.ny }}</td>
+                <td>{{ item.msroom_details.nj }}</td>
+                <td>{{ item.msroom_details.ct }}</td>
+                <td>{{ item.msroom_details.pa }}</td>
+                <td>{{ item.msroom_details.number_275 }}</td>
+                <td>{{ item.msroom_details.total }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

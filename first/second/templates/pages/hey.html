@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: auto auto; /* 2열 구조 */
+            gap: 10px; /* 각 항목 사이의 간격 */
+        }
+        .item {
+            border: 1px solid black; /* 테두리 설정 */
+            padding: 5px; /* 내부 여백 */
+        }
+    </style>
+</head>
+<body>
+    <article>
+        <div class="container">
+            {% for cbm in cbm_data %}
+                <div class="item">{{ cbm.model_code }}</div>
+                <div class="item">{{ cbm.cbm }}</div>
+            {% endfor %}
+        </div>
+    </article>
+</body>
+</html>
+

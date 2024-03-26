@@ -1,0 +1,49 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Item List</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+</head>
+<body>
+    <h1>Item List</h1>
+    <ul>
+        {% for item in items %}
+        <li>{{ item.name }} |||  On Hand: {{ item.on_hand }},"|||" Color Code: {{ item.color_code | default:"N/A" }}, Model Code: {{ item.model_code | default:"N/A" }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Item List</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Item List</h1>-->
+<!--    <ul>-->
+<!--        {% for item in items %}-->
+<!--        <li>{{ item.name }} - On Hand: {{ item.on_hand }}</li>-->
+<!--        {% endfor %}-->
+<!--    </ul>-->
+<!--</body>-->
+<!--</html>-->

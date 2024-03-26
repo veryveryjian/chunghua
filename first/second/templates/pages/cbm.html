@@ -1,0 +1,58 @@
+{% load static %}
+
+<head>
+      <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+</head>
+
+<!-- your_template.html -->
+<h1>NY CBM Data</h1>
+
+
+
+<form method="get" action="">
+  <label for="color_code">Choose a color:</label>
+  <select name="color_code" id="color_code" onchange="this.form.submit()">
+    <option value="">All Colors</option>
+    {% for color in unique_colors %}
+    <option value="{{ color }}" {% if selected_color == color %}selected{% endif %}>{{ color }}</option>
+    {% endfor %}
+  </select>
+</form>
+
+
+<!-- 엑셀 다운로드 버튼 -->
+<a href="{% url 'download_excel' %}?color_code={{ selected_color }}">Download Excel</a>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Item Name</th>
+<!--      <th>Model Code</th>-->
+      <th>On Hand</th>
+<!--      <th>Color Code</th>-->
+<!--      <th>Model Code</th>-->
+      <th>CBM</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in items_data %}
+      <tr>
+        <td>{{ item.item_name }}</td>
+<!--        <td>{{ item.model_code }}</td>-->
+        <td>{{ item.on_hand }}</td>
+<!--        <td>{{ item.color_code }}</td>-->
+<!--        <td>{{ item.model_code }}</td>-->
+        <td>{{ item.cbm }}</td>
+        <td>{{ item.total_cbm }}</td>
+
+      </tr>
+    {% empty %}
+      <tr>
+        <td colspan="6">No items found.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
